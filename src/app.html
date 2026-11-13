@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sajjad Hashmani — Senior GenAI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080c;--fg:#f5f5f7;--mut:#9097a8;--bg2:#f5f5f7;--fg2:#0b0d14;--mut2:#5b6172;--sig:#7aa7ff;--ember:#ffb067;--line:rgba(255,255,255,.14);--card:#12141b;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--fg:#0b0d14;--mut:#5b6172;--bg2:#07080c;--fg2:#f5f5f7;--mut2:#9097a8;--sig:#2f63d9;--ember:#c26a1b;--line:rgba(0,0,0,.14);--card:#ffffff;color-scheme:light}}
+:root[data-theme="dark"]{--bg:#07080c;--fg:#f5f5f7;--mut:#9097a8}
+html{scroll-behavior:smooth;scroll-padding-top:calc(60px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.55 "Inter Tight",-apple-system,"SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sig);outline-offset:3px;border-radius:4px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(20px,5vw,56px);backdrop-filter:saturate(180%) blur(18px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line);font-size:14px}
+nav b{font-weight:600;letter-spacing:-.01em}nav div{display:flex;gap:22px}nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--fg)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.wrap.wide{max-width:1360px}
+h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.02;font-weight:600}
+.hero{min-height:calc(100svh - 54px);display:flex;flex-direction:column;justify-content:center;padding-block:72px}
+.hero h1{font-size:clamp(56px,13vw,176px);font-weight:700;letter-spacing:-.06em;line-height:.9;animation:focus 1.4s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+@keyframes focus{from{opacity:0;filter:blur(22px);transform:scale(1.04)}to{opacity:1;filter:none;transform:none}}
+.role{font-size:clamp(22px,3.2vw,40px);font-weight:500;letter-spacing:-.03em;margin:36px 0 18px}
+.sum{max-width:84ch;color:var(--mut);font-size:clamp(17px,1.6vw,21px)}
+.meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:15px;color:var(--mut)}
+.meta a{text-decoration:none;border-bottom:1px solid var(--line)}.meta a:hover{color:var(--fg)}
+.cue{margin-top:56px;font-size:14px;color:var(--mut)}
+/* pinned stage */
+.stage{height:720vh;position:relative}
+.pin{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));height:calc(100svh - 54px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(16px,3vw,48px);align-items:center;padding:0 clamp(20px,5vw,56px);max-width:1320px;margin:0 auto}
+.copy{position:relative}
+.cap{font-size:clamp(34px,4.6vw,68px);font-weight:600;letter-spacing:-.045em;line-height:1;min-height:3.1em;position:relative}
+.cap i{font-style:normal;position:absolute;inset:0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+.cap i.on{opacity:1;transform:none}
+.q,.sql{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:16px 18px;font-size:15px;margin-top:14px;min-height:56px}
+.q{font-size:18px}.sql{font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--sig);white-space:pre-wrap;min-height:92px}
+.note{font-size:12px;color:var(--mut);margin-top:10px}
+canvas{width:100%;height:min(78svh,720px);display:block}
+.pips{display:flex;gap:6px;margin-bottom:22px}.pips span{width:36px;height:4px;border-radius:2px;background:var(--line);transition:background .3s}.pips span.on{background:var(--fg)}
+.ph{min-height:300px}.ph small{display:block;color:var(--mut);font-size:14px;margin-bottom:10px}
+.ph h3{font-size:clamp(28px,3.4vw,48px);letter-spacing:-.04em;line-height:1.02}
+.ph p{color:var(--mut);font-size:clamp(15px,1.3vw,18px);margin:14px 0 0;max-width:46ch}.ph p.ex{color:var(--fg)}
+.ph.swap{animation:sw .5s both}@keyframes sw{from{opacity:0;transform:translateY(16px)}}
+.copy:not(.f1) .q,.copy:not(.f2) .sql{display:none}.copy.f1 .ph{min-height:0}
+.bar{position:absolute;left:0;right:0;bottom:-26px;height:2px;background:var(--line)}.bar b{display:block;height:100%;width:0;background:var(--fg)}
+/* workflow demo */
+:root{--ok:#3fb27f;--bad:#e5605f}
+.wf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.6fr);gap:clamp(20px,3vw,48px);align-items:start}
+.story{position:sticky;top:calc(84px + env(safe-area-inset-top,0px))}
+.story small{color:var(--mut);font-size:14px}.story h3{font-size:clamp(26px,3vw,40px);margin:8px 0 14px}
+.story p{color:var(--mut);margin:0 0 22px;min-height:11em;font-size:17px}
+.pips.sp{margin-bottom:26px}.pips.sp span{width:22px}
+.sbtns{display:flex;gap:10px;flex-wrap:wrap}
+.pb{border:0;border-radius:99px;padding:11px 20px;font:600 15px "Inter Tight",system-ui,sans-serif;background:var(--fg);color:var(--bg);cursor:pointer;transition:transform .2s,opacity .2s}
+.pb:active{transform:scale(.96)}.pb:disabled{opacity:.35;cursor:not-allowed}.pb.gb{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.app{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;padding:18px 22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--mut)}
+.top h4{flex:1 1 100%;margin:0;font-size:22px;letter-spacing:-.035em;color:var(--fg);font-weight:600}.top b{color:var(--fg);font-weight:600}
+.stat{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px 20px}.grp{display:inline-flex;align-items:center;gap:8px}
+.pill{padding:4px 14px;border-radius:99px;font-weight:600;border:1.5px solid;transition:.4s}.pill.neutral{color:var(--fg);border-color:var(--line)}
+.pill.good{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}.pill.bad{color:var(--bad);border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,transparent)}
+.gs{overflow-x:auto}
+.gantt{--lc:88px;--rh:62px;--hh:42px;--n:7;position:relative;min-width:660px;height:calc(var(--hh) + var(--rh)*6 + 24px);user-select:none;-webkit-user-select:none}
+.hd,.vl,.tn{position:absolute;left:calc(var(--lc) + (100% - var(--lc))*var(--i,var(--s,0))/var(--n));width:calc((100% - var(--lc))/var(--n))}
+.hd{top:0;height:var(--hh);display:grid;place-items:center;font-size:13px;color:var(--mut)}.hd.now{color:var(--ember);font-weight:600}
+.vl{top:8px;bottom:8px;width:0;border-left:1px dotted var(--line)}
+.tn{top:var(--hh);bottom:0;background:color-mix(in srgb,var(--ember) 8%,transparent);transition:left .5s cubic-bezier(.2,.7,.2,1)}
+.hl{position:absolute;left:12px;right:12px;top:calc(var(--hh) + var(--rh)*var(--r));border-top:1px solid var(--line)}
+.rl{position:absolute;left:16px;top:calc(var(--hh) + var(--rh)*var(--r));height:var(--rh);display:flex;align-items:center;font-size:14px;color:var(--mut)}
+.bar{position:absolute;z-index:2;top:calc(var(--hh) + var(--rh)*var(--r) + 10px);height:calc(var(--rh) - 20px);left:calc(var(--lc) + (100% - var(--lc))*var(--s)/var(--n) + 5px);width:calc((100% - var(--lc))*var(--l)/var(--n) - 10px);display:flex;align-items:center;justify-content:center;border:1.5px solid color-mix(in srgb,var(--fg) 35%,transparent);border-radius:12px;background:var(--card);font-size:14px;font-weight:500;cursor:pointer;transition:left .6s cubic-bezier(.2,.7,.2,1),width .6s cubic-bezier(.2,.7,.2,1),background .4s,border-color .4s}
+.bar.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--card))}.bar.late{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 16%,var(--card))}
+.bar.tgt{outline:2px solid var(--sig);outline-offset:3px}
+.rz{position:absolute;right:0;top:0;bottom:0;width:14px;cursor:ew-resize;touch-action:none}.rz::after{content:"";position:absolute;right:4px;top:28%;bottom:28%;width:3px;border-radius:2px;background:currentColor;opacity:0;transition:opacity .2s}
+.bar:hover .rz::after{opacity:.45}.bar.done .rz{display:none}
+.port{position:absolute;right:-10px;top:50%;width:15px;height:15px;margin-top:-7.5px;border-radius:50%;border:2px solid var(--fg);background:var(--card);opacity:0;cursor:crosshair;transition:opacity .2s;touch-action:none}
+.bar:hover .port,.bar:focus-visible .port{opacity:1}@media (hover:none){.port{opacity:.75}}
+.arr{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible;color:var(--mut)}
+.arr .v{fill:none;stroke:currentColor;stroke-width:1.6}.arr .hh{fill:none;stroke:transparent;stroke-width:14;pointer-events:stroke;cursor:pointer}.arr .e:hover .v{stroke:var(--bad);stroke-width:2.4}
+#tp{stroke:var(--sig)}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 22px;border-top:1px solid var(--line)}#msg{color:var(--mut);font-size:14px}
+.hint{margin:0;padding:0 22px 18px;color:var(--mut);font-size:13px}
+dialog{padding:0;border:1px solid var(--line);border-radius:24px;background:var(--card);color:var(--fg);width:min(420px,calc(100% - 40px))}dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
+.dm{padding:28px}.dm h3{font-size:28px;margin-bottom:12px}.dm p{margin:0 0 12px;color:var(--mut);font-size:16px}.dm .mst{color:var(--fg);font-weight:600}.dm .mst.bad{color:var(--bad)}.dm .mst.good{color:var(--ok)}.dm .mn{color:var(--ember)}
+.ch{border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:99px;padding:3px 12px;margin:0 6px 4px 0;font:inherit;font-size:14px;cursor:pointer}.ch:hover{border-color:var(--bad);color:var(--bad)}
+@media (max-width:820px){.wf{grid-template-columns:1fr}.story{position:static}.story p{min-height:0}.gantt{--lc:68px}}
+@media (prefers-reduced-motion:reduce){.bar,.tn,.pill{transition:none}}
+/* alt sections */
+.alt{background:var(--bg2);color:var(--fg2);--mut:var(--mut2);--line:rgba(127,127,127,.28);--card:color-mix(in srgb,var(--bg2) 94%,var(--fg2))}
+section.pad{padding-block:clamp(80px,12vw,160px)}
+.big{font-size:clamp(40px,7vw,104px);margin-bottom:56px}
+.jobs{position:relative}
+.job{position:sticky;top:calc(66px + var(--i)*18px + env(safe-area-inset-top,0px));background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,48px);margin-bottom:28px;box-shadow:0 -18px 40px -24px rgba(0,0,0,.35)}
+.job header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;align-items:baseline;margin-bottom:22px}
+.job h3{font-size:clamp(26px,3.4vw,44px)}.when{color:var(--mut);font-size:15px}
+.job ul{margin:0;padding-left:1.1em;display:grid;gap:12px;max-width:105ch}.job li{color:var(--mut);font-size:16.5px}.job li b{color:var(--fg2);font-weight:600}
+.run{margin-top:24px;border:0;border-radius:99px;padding:12px 22px;font:600 15px inherit;font-family:inherit;background:var(--fg2);color:var(--bg2);cursor:pointer;transition:transform .2s}.run:active{transform:scale(.96)}
+.log{margin-top:16px;font:13.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;display:grid;gap:4px}.log p{margin:0;opacity:0;transform:translateX(-8px);transition:.4s}.log p.on{opacity:1;transform:none}.bad{color:#d9534f}.ok{color:#2e9d5b}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,max-content);justify-content:space-between;gap:40px;text-align:center}
+@media (max-width:1000px){.stats{grid-template-columns:repeat(2,1fr);justify-content:stretch;gap:48px 24px}}
+.stats strong{display:block;font-size:clamp(64px,9vw,128px);font-weight:700;letter-spacing:-.06em;line-height:1}.stats span{color:var(--mut);font-size:16px}
+/* skills */
+.skills{display:grid;gap:0}.sg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:20px 40px;padding:28px 0;border-top:1px solid var(--line);transition:opacity .3s}
+.skills:hover .sg{opacity:.35}.skills .sg:hover{opacity:1}
+.sg h3{font-size:clamp(22px,2.4vw,32px)}.chips{display:flex;flex-wrap:wrap;gap:10px;align-items:center;align-content:center}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:6px 16px;font-size:16px;transition:transform .25s,background .25s,color .25s}.chips span:hover{transform:translateY(-3px);background:var(--fg);color:var(--bg)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.award{border-top:1px solid var(--line);padding-top:22px}.award h3{font-size:clamp(28px,3.4vw,48px)}.award p{color:var(--mut);margin:10px 0 0}
+footer{padding-block:clamp(80px,12vw,160px);text-align:center}
+footer a.mail{display:inline-block;font-size:clamp(18px,5vw,64px);font-weight:600;letter-spacing:-.05em;text-decoration:none;white-space:nowrap}
+footer a.mail:hover{color:var(--sig)}footer p{color:var(--mut)}
+@media (max-width:820px){.pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-content:start;padding-top:12px;gap:0}.pin canvas{order:-1;height:40svh}.ph{min-height:0}.cap{min-height:2.2em;font-size:32px}.sql{min-height:70px}.sg,.two{grid-template-columns:1fr}.job{position:relative;top:auto}.copy{order:1}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1{animation:none}.cap i,.log p{transition:none}}
+
+/* personal projects */
+.phead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.phead .big{margin-bottom:56px}.big span{color:var(--mut)}
+.tag{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:8px;padding:6px 12px;color:var(--mut);white-space:nowrap}.phead .tag{margin-bottom:64px}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-bottom:28px}
+.pv{position:relative;min-height:440px;display:grid;place-items:center;padding:28px;overflow:hidden}
+.pc{padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column}.pc header{display:flex;justify-content:space-between;align-items:center}
+.num{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ember)}.pc h3{font-size:clamp(30px,3.6vw,46px);margin:28px 0 12px}.lead{color:var(--mut);font-size:18px;margin:0 0 auto;padding-bottom:28px}
+.blk{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}.blk h4{margin:0 0 8px;font:500 12.5px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ember)}.blk p{margin:0;color:var(--mut);font-size:16px}
+.pv1{background:linear-gradient(135deg,#c9d7cd,#b3c7b8)}
+.win{width:min(100%,440px);background:#f6f8f5;color:#1d2622;border-radius:16px;padding:14px 16px 16px;box-shadow:0 26px 50px -22px rgba(20,40,30,.5);transform:rotate(-3deg);transition:transform .5s cubic-bezier(.2,.7,.2,1)}.pv1:hover .win,.win:focus-within{transform:none}
+.dots{display:flex;gap:6px;margin-bottom:12px}.dots i{width:10px;height:10px;border-radius:50%;background:#ee6a5f}.dots i:nth-child(2){background:#f4be4f}.dots i:nth-child(3){background:#61c554}
+.srch{display:flex;align-items:center;background:#e6ede8;border-radius:10px;padding:0 12px}.srch:focus-within{box-shadow:0 0 0 2px #5f8f73}.srch input{flex:1;min-width:0;border:0;background:none;padding:10px 0;font:14px "Inter Tight",system-ui,sans-serif;color:#1d2622;outline:none}.srch kbd{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#5b6b61}
+.clips{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:3px;align-content:start;min-height:236px}
+.clips li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 10px;border-radius:9px;font-size:14px;cursor:pointer}.clips li:hover{background:#e6ede8}.clips li.on{background:#cfe0d5}.clips li.nw{animation:pop .45s cubic-bezier(.2,.7,.2,1)}
+.clips li span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clips li em{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;font-style:normal;letter-spacing:.08em;color:#667a6e}
+@keyframes pop{from{opacity:0;transform:translateY(-8px)}}
+.pv1 .pb{margin-top:16px}.cbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}.pv1 .cbtns .pb{margin-top:0}.pv1 .win+.pb{display:block}
+.pv2{background:radial-gradient(120% 100% at 30% 0%,#31575a 0%,#18292f 60%,#101c20)}
+.mc{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.rig{position:relative;width:min(100%,500px);height:280px}
+.cam{position:absolute;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(200deg,#5b7c78,#2d4446);color:rgba(255,255,255,.85);font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;padding:12px;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s,border-color .4s}
+.cam::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.22),transparent 55%);animation:drift 9s ease-in-out infinite alternate}@keyframes drift{to{transform:translate(18%,14%)}}
+.cam span{position:relative}.cam.m{left:27%;width:46%;top:8px;height:250px;z-index:3}
+.cam.u{left:0;width:36%;top:38px;height:200px;transform:rotate(-8deg)}.cam.f{right:0;width:36%;top:38px;height:200px;transform:rotate(7deg);background:linear-gradient(200deg,#7b7466,#463f36)}
+.mc.two .cam.u{opacity:0;transform:translateX(-36px) rotate(-14deg);pointer-events:none}.mc.rec .cam{border-color:rgba(255,90,77,.75)}
+.ctl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px}
+.seg{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:3px}.seg button{border:0;background:none;color:rgba(255,255,255,.75);font:500 13px "Inter Tight",system-ui,sans-serif;padding:7px 13px;border-radius:99px;cursor:pointer}.seg button.on{background:#fff;color:#12222a}.mc.rec .seg{opacity:.45;pointer-events:none}
+.shut{width:54px;height:54px;border-radius:50%;border:3px solid #fff;background:none;padding:3px;cursor:pointer}.shut i{display:block;width:100%;height:100%;border-radius:50%;background:#ff5a4d;transition:.3s}.shut.on i{border-radius:8px;transform:scale(.55)}
+.cst{display:flex;align-items:center;gap:8px;margin:0;color:rgba(255,255,255,.85);font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:50%;background:#f0a070}.mc.rec .dot{background:#ff5a4d;animation:pulse 1s infinite}@keyframes pulse{50%{opacity:.3}}
+.files{min-height:56px;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start;justify-content:center;color:rgba(255,255,255,.85);font-size:13px}.files b{font-weight:500;width:100%;text-align:center}.files span{border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:3px 12px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}
+.pv3{background:linear-gradient(135deg,#eadcc9,#cfbadb)}
+.ph3{width:190px;height:340px;border-radius:34px;border:2px dashed rgba(70,45,75,.4);background:rgba(255,255,255,.45);display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#5b4660;font:13px ui-monospace,SFMono-Regular,Menlo,monospace}
+@media (max-width:820px){.proj{grid-template-columns:1fr}.pv{min-height:360px}.phead{flex-direction:column;align-items:flex-start;gap:0}.phead .tag{margin:-32px 0 36px}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.cam::before{animation:none}.cam,.win{transition:none}}
+
+.pv3{background:linear-gradient(135deg,#eadcc9,#cfbadb)}
+.ct{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;color:#2a2230}
+.ctrig{position:relative;width:min(100%,430px);height:290px}
+.ctw{position:absolute;width:66%;height:200px;border-radius:14px;background:#fbf8fc;border:1px solid rgba(60,40,70,.12);box-shadow:0 10px 24px -14px rgba(40,20,50,.4);overflow:hidden;filter:saturate(.7) brightness(.95);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,filter .45s}
+.ctb{left:0;top:0;z-index:2}.ctm{right:0;bottom:0;z-index:1}.ctw.act{z-index:3;filter:none;transform:translateY(-6px);box-shadow:0 30px 50px -18px rgba(40,20,50,.55)}
+.ctbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid rgba(60,40,70,.1);font-size:12px;color:#6b5f73}.ctbar i{width:9px;height:9px;border-radius:50%;background:#cfc8d3;transition:background .3s}
+.ctw.act .ctbar i:nth-child(1){background:#ee6a5f}.ctw.act .ctbar i:nth-child(2){background:#f4be4f}.ctw.act .ctbar i:nth-child(3){background:#61c554}.ctbar span{margin:0 auto;padding-right:40px}
+.ctbody{padding:12px}.ctaddr{background:#eee8f1;border-radius:8px;padding:5px 10px;font-size:12px;color:#6b5f73;margin-bottom:12px}.ctbody b{display:block;height:8px;border-radius:4px;background:#e4dde8;margin-top:10px}
+.bub{margin:0 0 8px;padding:8px 12px;border-radius:14px;background:#ece6ef;font-size:13px;width:fit-content}.bub.me{background:#3b82f6;color:#fff;margin-left:auto}
+.lnk{border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+#ctinp{width:100%;margin-top:4px;border:1px solid #d6cddb;border-radius:99px;padding:8px 12px;font:13px "Inter Tight",system-ui,sans-serif;background:#fff;color:#2a2230;outline:none;transition:box-shadow .2s,border-color .2s}#ctinp:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.4)}
+.ctc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.seg2{display:flex;border:1px solid rgba(60,40,70,.3);border-radius:99px;padding:3px}.seg2 button{border:0;background:none;color:#4b3d54;font:500 13px "Inter Tight",system-ui,sans-serif;padding:7px 13px;border-radius:99px;cursor:pointer}.seg2 button.on{background:#2a2230;color:#fff}
+.ctreset{border:1px solid rgba(60,40,70,.3);background:none;color:#2a2230;border-radius:99px;padding:8px 16px;font:500 13px "Inter Tight",system-ui,sans-serif;cursor:pointer}
+.ctmsg{min-height:44px;margin:0;max-width:440px;text-align:center;font-size:14px;color:#4b3d54}.ctn{margin:0;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#6b5a74}.ctn b{font-weight:600;color:#2a2230}
+@media (prefers-reduced-motion:reduce){.ctw{transition:none}}
+</style>
+</head>
+<body>
+<nav><b>Sajjad Hashmani</b><div><a href="#workflow">Workflow</a><a href="#work">Work</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+
+<main>
+<section class="hero"><div class="wrap">
+  <h1>Sajjad<span>Hashmani</span></h1>
+  <p class="role">Senior GenAI Engineer</p>
+  <p class="sum">Senior GenAI Engineer with a Master’s in Computer Science and 7+ years of experience building intelligent, reliable software. I specialize in connecting large language models to real-world data and systems, including retrieval-augmented generation, knowledge graphs, Text-to-SQL, and agentic workflows, across enterprise AI platforms and cloud-native, distributed systems. AI isn’t just my job. It’s woven into how I work and live, from the tools I build to the way I learn, plan, and solve everyday problems. Outside of work, I build apps and tools as a hobby to tackle the real-life problems I run into myself. I love turning complex problems into simple, dependable products, and I enjoy mentoring other engineers along the way.</p>
+  <div class="meta"><a href="mailto:sajjadhashmani1@gmail.com">sajjadhashmani1@gmail.com</a><a href="tel:+16822565391">(682)-256-5391</a><a href="http://sajjadhashmani.com/">sajjadhashmani.com</a><span>No sponsorship required</span></div>
+  <p class="cue">Scroll to see the work in motion ↓</p>
+</div></section>
+
+<section class="pad" id="graphrag" style="padding-bottom:clamp(24px,4vw,48px)"><div class="wrap wide">
+ <h2 class="big" style="margin-bottom:28px">GraphRAG.<br><span>Ask your data anything, in plain English.</span></h2>
+ <p class="sum">An end-to-end platform that lets people ask complex relational databases questions in natural language. A four-layer semantic knowledge graph guides schema discovery, and an LLM turns the question into executable SQL and a human-readable answer. Scroll to watch the graph get built, then follow a question as it travels through it.</p>
+</div></section>
+
+<section class="stage" id="stage" aria-label="How the four-layer graph works">
+ <div class="pin">
+  <div class="copy" id="copy">
+   <div class="pips"><span></span><span></span><span></span><span></span></div>
+   <div class="ph" id="ph"></div>
+   <div class="q" id="q" aria-label="Question"></div>
+   <div class="sql" id="sql" aria-label="Generated SQL"></div>
+   <p class="note">Illustrative demo. The graph builds from the bottom up; retrieval runs from the top down. Scroll to drive it.</p>
+   <div class="bar"><b id="bar"></b></div>
+  </div>
+  <canvas id="cv" role="img" aria-label="A four-layer hierarchy built from the bottom up: tables and columns, then clusters, then two rounds of community detection. A question embedding is matched at layer 4 and propagated down to layer 1"></canvas>
+ </div>
+</section>
+
+<section class="pad" id="workflow"><div class="wrap wide">
+ <h2 class="big">Workflow management</h2>
+ <div class="wf">
+  <aside class="story"><div class="pips sp" id="sp"></div><small id="sn"></small><h3 id="stt"></h3><p id="stx"></p>
+   <div class="sbtns"><button class="pb gb" id="back">◂ Back</button><button class="pb" id="next">Next ▸</button></div></aside>
+  <div class="app">
+   <div class="top"><h4>Client Onboarding Workflow</h4><span>Workflow start <b>07/16</b></span><span>Original end <b>07/20</b></span><span>Projected end <b id="pe"></b></span><span>Current date <b id="cd"></b></span><div class="stat"><span class="grp">Workflow status <span class="pill neutral" id="ws" aria-live="polite">Incomplete</span></span><span class="grp">Health <span class="pill good" id="st" aria-live="polite">Healthy</span></span></div></div>
+   <div class="gs"><div class="gantt" id="gantt"></div></div>
+   <div class="tools"><button class="pb gb" id="adv">Advance a day</button><button class="pb gb" id="rst">Reset</button><span id="msg" aria-live="polite"></span></div>
+   <p class="hint">Click a task to open it · Drag a right edge to resize · Drag ○ onto another task to connect · Click an arrow to remove it</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="alt pad" id="work"><div class="wrap wide">
+ <h2 class="big">Work experience</h2>
+ <div class="jobs">
+  <article class="job" style="--i:0"><header><h3>Senior GenAI Engineer at Deloitte</h3><span class="when">Remote · April 2026 – Present</span></header><ul>
+   <li><b>Architected an MCP-based AI infrastructure provisioning platform</b> enabling natural-language infrastructure creation through Copilot, using a discovery-driven tool interface and centralized control-plane orchestration.</li>
+   <li><b>Engineered a three-layer architecture</b> comprising a generic MCP tool interface, a centralized control plane, and an extensible adapter framework, enabling new infrastructure resource types to be integrated without modifying the AI-facing tools.</li>
+   <li>Implemented <b>stateful provisioning and workflow orchestration</b> with database-backed context enrichment, TTL-based expiration, and composable resource adapters to reuse user inputs and provision multiple infrastructure resources through a unified interface.</li></ul></article>
+
+  <article class="job" style="--i:1"><header><h3>Senior Software Engineer Consultant at Verizon</h3><span class="when">Remote · July 2023 – April 2026</span></header><ul>
+   <li><b>Architected and built an end-to-end GraphRAG platform</b> enabling natural-language access to complex relational data, transforming user questions into executable SQL and human-readable answers through graph-guided schema discovery and LLM-based query generation.</li>
+   <li><b>Designed a four-layer semantic knowledge graph</b> using graph-based clustering and community-detection techniques, LLM-generated node descriptions, and embedding-based similarity clustering to unify semantically equivalent columns and organize related schema entities into hierarchical retrieval structures.</li>
+   <li><b>Built a hybrid GraphRAG retrieval pipeline</b> integrating semantic vector search, keyword-based retrieval, and AI-powered relevance reranking to identify relevant schema context, prune irrelevant columns, and identify join paths for context-aware SQL generation.</li>
+   <li><b>Engineered a Self-Correction Reflection Loop</b>, capturing PostgreSQL runtime exceptions and re-feeding schema context alongside error traces into the LLM to auto-correct malformed syntax and self-heal failed queries.</li>
+   <li><b>Implemented Safety Guardrails &amp; Validation Constraints</b>, restricting SQL generation strictly to read-only SELECT queries, enforcing AST/regex query sanitization, and setting dynamic retry limits to prevent infinite execution loops.</li>
+   <li><b>Led a team of 3 engineers</b> to design and build a scalable synthetic data generation pipeline that preserved production data characteristics across multiple sources, enabling realistic testing while maintaining strict data privacy and security guarantees.</li></ul>
+   <button class="run" id="run">Watch a self-healing query</button>
+   <div class="log" id="log" aria-live="polite"><p>SELECT cust_nm FROM accounts LIMIT 5; <span class="bad">✕ column “cust_nm” does not exist</span></p><p>Schema + error trace sent back to the model…</p><p>SELECT customer_name FROM accounts LIMIT 5; <span class="ok">✓ 5 rows</span></p><p>Guardrail: read-only SELECT · retries capped</p></div></article>
+
+  <article class="job" style="--i:2"><header><h3>Software Developer I - III at Paycom</h3><span class="when">Dallas, Texas · November 2019 – July 2023</span></header><ul>
+   <li>Optimize SQL queries for generating reports by implementing techniques such as Common Table Expressions (CTEs), server-side pagination, and indexing. Achieved significant runtime reduction, up to 70%, for improved performance.</li>
+   <li>Design and develop Single-Page Applications (SPAs) for appointment scheduling, product/process tracking, and call log management systems to track and record issues and outcomes efficiently.</li>
+   <li>Designed and built an interactive Gantt-chart workflow management tool that lets managers track multi-person workflows, such as client onboarding, with each task boxed into its deadline window and color-coded green when completed on time and red when late.</li>
+   <li>Implemented dependency-aware scheduling that pushes dependent tasks back when a predecessor runs late, recalculates the projected end date, and flags the workflow as At Risk or Healthy against its original end date, with an overall Complete or Incomplete status.</li>
+   <li>Enabled users to drag task edges to adjust durations and to connect tasks as predecessors and dependents, with completion gating so a task can only be completed once its predecessors are done.</li>
+   <li>Conducted peer code reviews and followed Agile practices to ensure code quality within the development team.</li></ul></article>
+ </div>
+</div></section>
+
+<section class="pad" id="projects"><div class="wrap wide">
+ <div class="phead"><h2 class="big">Personal projects.<br><span>Practical ideas, made real.</span></h2><span class="tag">Builds / 03</span></div>
+
+ <article class="proj rv">
+  <div class="pv pv1"><div><div class="win"><div class="dots"><i></i><i></i><i></i></div>
+   <label class="srch"><input id="cq" type="search" placeholder="Search saved clips" aria-label="Search saved clips" autocomplete="off"><kbd>⌘ K</kbd></label>
+   <ul class="clips" id="clips"></ul></div>
+   <div class="cbtns"><button class="pb" id="cnew" type="button">Copy something new</button><button class="pb" id="cph" type="button">Copy on iPhone</button></div></div></div>
+  <div class="pc"><header><span class="num">01</span><span class="tag">macOS · Desktop</span></header>
+   <h3>Clipboard History</h3><p class="lead">A native desktop utility built for macOS.</p>
+   <div class="blk"><h4>Core functionality</h4><p>It runs quietly in the background to track, store, and manage a user’s clipboard history over time. This allows you to easily access, search, and reuse previously copied text, links, or snippets without losing them when copying something new.</p></div>
+   <div class="blk"><h4>Cross-device sync</h4><p>It works across all Apple devices signed in to the same iCloud account, so your history isn’t limited to the Mac. Text you copy on your iPhone, even several snippets in a row, shows up in your Mac’s clipboard history too.</p></div></div>
+ </article>
+
+ <article class="proj rv">
+  <div class="pv pv2"><div class="mc" id="mc">
+   <div class="rig"><div class="cam u"><span>Ultra Wide</span></div><div class="cam f"><span>Front</span></div><div class="cam m"><span>Main</span></div></div>
+   <div class="ctl"><div class="seg" role="group" aria-label="Camera configuration"><button type="button">Main + Front</button><button type="button" class="on">Main + Ultra Wide + Front</button></div>
+    <button class="shut" id="shut" type="button" aria-label="Record" aria-pressed="false"><i></i></button></div>
+   <p class="cst"><span class="dot"></span><span id="cst" aria-live="polite"></span></p>
+   <div class="files" id="cfiles" aria-live="polite"></div></div></div>
+  <div class="pc"><header><span class="num">02</span><span class="tag">iOS · Camera</span></header>
+   <h3>MultiCam</h3><p class="lead">An advanced iOS camera application designed to leverage modern Apple device hardware capabilities for multi-feed video recording.</p>
+   <div class="blk"><h4>Core functionality</h4><p>It enables simultaneous multi-camera video recording (such as combining the Main Camera + Front Camera, or a triple feed configuration using Main + Ultra Wide + Front cameras concurrently).</p></div>
+   <div class="blk"><h4>Media handling</h4><p>Any pictures or video captures taken while operating in MultiCam mode are automatically processed and saved as individual, standalone files directly into the device’s photo gallery.</p></div></div>
+ </article>
+
+ <article class="proj rv">
+  <div class="pv pv3"><div class="ct" id="ct">
+   <div class="ctrig">
+    <div class="ctw ctb act" id="ctb"><div class="ctbar"><i></i><i></i><i></i><span>Safari</span></div><div class="ctbody"><div class="ctaddr">apple.com</div><b style="width:82%"></b><b style="width:60%"></b><b style="width:72%"></b></div></div>
+    <div class="ctw ctm" id="ctm"><div class="ctbar"><i></i><i></i><i></i><span>Messages</span></div><div class="ctbody"><p class="bub">Are we still on for lunch?</p><p class="bub me"><button type="button" class="lnk" id="ctlink">Open the menu ↗</button></p><input id="ctinp" placeholder="iMessage" aria-label="iMessage field" autocomplete="off"></div></div>
+   </div>
+   <div class="ctc"><div class="seg2" id="cttg" role="group" aria-label="Click-through activation"><button type="button" class="on">Without the app</button><button type="button">With the app</button></div><button class="ctreset" id="ctreset" type="button">Try again</button></div>
+   <p class="ctmsg" id="ctmsg" aria-live="polite"></p>
+   <p class="ctn">Clicks to act: <b id="ctcnt">—</b></p>
+  </div></div>
+  <div class="pc"><header><span class="num">03</span><span class="tag">macOS · Utility</span></header>
+   <h3>Click-Through</h3><p class="lead">A macOS utility that removes the extra click it takes to activate a window.</p>
+   <div class="blk"><h4>The problem</h4><p>On macOS, the first click on a background window only makes that window active. Say you’re working in one browser window and a second one has a pop-up, or you want to reply in the Messages window. You click once to activate it, then click again to do what you actually meant, like opening a link or selecting an input field.</p></div>
+   <div class="blk"><h4>Core functionality</h4><p>This app removes the need for that first activating click completely. Now the first click activates the window and does the task of that click, such as opening a link or selecting an input field.</p></div></div>
+ </article>
+</div></section>
+
+<section class="pad"><div class="wrap"><div class="stats">
+ <div><strong data-n="7" data-s="+">0</strong><span>years of experience</span></div>
+ <div><strong data-n="3" data-s="">0</strong><span>production ready macOS &amp; iOS apps</span></div>
+ <div><strong data-n="5" data-s="+">0</strong><span>engineers mentored</span></div>
+ <div><strong data-n="2" data-s="">0</strong><span>innovation awards</span></div>
+</div></div></section>
+
+<section class="alt pad" id="skills"><div class="wrap">
+ <h2 class="big">Skills</h2>
+ <div class="skills">
+  <div class="sg"><h3>Programming/Scripting Languages</h3><div class="chips"><span>Java</span><span>Python</span><span>Node.js</span><span>React</span><span>JavaScript</span></div></div>
+  <div class="sg"><h3>AI &amp; Machine Learning</h3><div class="chips"><span>Large Language Models (LLMs)</span><span>Vector Databases</span><span>NLP</span><span>RAG &amp; GraphRAGs</span><span>Agentic Workflows</span></div></div>
+  <div class="sg"><h3>Tools and Databases</h3><div class="chips"><span>MySQL</span><span>PostgreSQL</span><span>Google Spanner</span><span>Neo4j</span><span>BigQuery</span><span>ChromaDB</span><span>Git</span><span>Jira</span></div></div>
+  <div class="sg"><h3>Cloud Platforms</h3><div class="chips"><span>AWS</span><span>GCP</span><span>Distributed Systems</span><span>System Design</span></div></div>
+ </div>
+</div></section>
+
+<section class="pad"><div class="wrap wide">
+ <h2 class="big">Accomplishments</h2>
+ <div class="two">
+  <div class="award"><h3>2024 Gartner Eye on Innovation Awards Runner-up (Americas)</h3><p>Team achievement</p></div>
+  <div class="award"><h3>2021 Innovation Award Recipient at Paycom</h3><p>Solo achievement</p></div>
+ </div>
+ <h2 class="big" style="margin-top:clamp(80px,10vw,140px)">Education</h2>
+ <div class="two">
+  <div class="award"><h3>Master’s in Computer Science</h3><p>The University of Texas at Arlington · Arlington, Texas · January 2017 – December 2018</p></div>
+  <div class="award"><h3>Bachelor’s in Computer Engineering</h3><p>University of Mumbai · Maharashtra, India · 2012 – 2016</p></div>
+ </div>
+</div></section>
+</main>
+
+<footer class="alt" id="contact"><div class="wrap">
+ <a class="mail" href="mailto:sajjadhashmani1@gmail.com">sajjadhashmani1@gmail.com</a>
+ <p>(682)-256-5391 · <a href="http://sajjadhashmani.com/">sajjadhashmani.com</a></p>
+</div></footer>
+
+<dialog id="dlg" aria-label="Task details"></dialog>
+<script>
+const $=s=>document.querySelector(s),clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),ease=t=>1-Math.pow(1-t,3);
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const cv=$('#cv'),ctx=cv.getContext('2d'),stage=$('#stage');
+const Q='What is the total revenue generated by customers in California?';
+const SQL="SELECT SUM(t.txn_amt) AS total_revenue\nFROM customers c\nJOIN orders o ON o.cust_id = c.id\nJOIN transactions t ON t.ord_id = o.id\nWHERE c.state = 'CA';";
+const PH=[
+['Layer 1 of 4: the fact layer','Tables and columns as nodes','Every table and column becomes a node. Columns that can be joined are linked by a join edge, the way emp.id and sales.emp_id are.','This layer holds the actual data, the tables and columns the SQL will ultimately use.'],
+['Layer 2 of 4','Clustering on the join edges','A clustering algorithm runs over the join edges. Each connected cluster becomes one new node. An LLM describes it, and that description is embedded as a vector.','customers, orders and transactions are joined together, so they collapse into one node: orders and payments.'],
+['Layer 3 of 4','Community detection on layer 2','A community detection algorithm finds communities among the layer 2 nodes. Each community becomes a new node, again described by an LLM and embedded as a vector.','Orders and payments joins employee sales to form a broader “Sales” node.'],
+['Layer 4 of 4: the top','Community detection, once more','The community detection algorithm runs again over layer 3. Each community becomes a layer 4 node, described by an LLM and embedded.','Every node above layer 1 carries a description and an embedding. Broad themes sit at the top, raw facts at the bottom.'],
+['Retrieval, step 1 of 2','Embed the question. Match layer 4.','The question becomes a vector embedding. We compare it with the embeddings of the layer 4 nodes.',''],
+['Retrieval, step 2 of 2','Propagate down. Generate SQL.','The match flows down through each layer, all the way to layer 1, where the actual tables and columns live. Those nodes go to the LLM as context to generate the SQL.','']];
+const LN=['Layer 1: facts (tables and columns)','Layer 2: join clusters','Layer 3: communities','Layer 4: communities'];
+const COL=['#7aa7ff','#5fd1a0','#e58bd6','#f2c94c','#ff8f70','#7ad7e8'];
+const TN=['customers','orders','transactions','employees','sales','products','inventory','shipments','carriers','suppliers','purchases','stores','regions'];
+const CL=[[0,1,2],[3,4],[5,6],[7,8],[9,10],[11,12]],N2=['Orders & payments','Employee sales','Product stock','Shipping','Procurement','Locations'];
+const G3=[[0,1],[2,3],[4,5]],N3=['Sales','Inventory & shipping','Procurement & sites'],G4=[[0],[1,2]],N4=['Sales & revenue','Operations'];
+const SAT=[[-.03,-.3],[0,-.34],[.03,-.3]],J=[[0,2,1,0],[1,2,2,0],[3,2,4,0],[5,2,6,0],[7,2,8,0],[9,2,10,0],[11,2,12,0]];
+const tu=i=>.04+i*.92/12,tv=i=>i%2?.7:.42,mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+const cu=CL.map(m=>mean(m.map(tu))),u3=G3.map(g=>mean(g.map(c=>cu[c]))),u4=G4.map(g=>mean(g.map(x=>u3[x]))),cOf=[];
+CL.forEach((m,c)=>m.forEach(t=>cOf[t]=c));
+let W,H,mx=-1,my=-1,P=RM?1:0,ph=-1;
+const pl=i=>({w:W*.78,h:Math.min(H*.15,100),sk:W*.12,cx:W*.5,cy:H*(.2+(3-i)*.22)});
+const pt=(i,u,v)=>{const p=pl(i);return[p.cx+(u-.5)*p.w+(.5-v)*p.sk,p.cy+(v-.5)*p.h]};
+function size(){const d=devicePixelRatio||1,r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0)}
+addEventListener('resize',size);size();
+cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});cv.addEventListener('pointerleave',()=>mx=-1);
+function draw(){
+ const cs=getComputedStyle(document.documentElement),fg=cs.getPropertyValue('--fg').trim(),mut=cs.getPropertyValue('--mut').trim(),em=cs.getPropertyValue('--ember').trim();
+ ctx.clearRect(0,0,W,H);
+ const c0=P<.68?Math.floor(P/.17):4,cur=Math.min(3,c0),fin=c0>=4;
+ const dot=(x,y,r,c,al)=>{const h=mx>=0&&Math.hypot(mx-x,my-y)<18;ctx.globalAlpha=al;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r*(h?1.6:1),0,7);ctx.fill()};
+ const txt=(s,x,y,al,sz=12,c=fg,wt=500,al2='center')=>{ctx.globalAlpha=al;ctx.fillStyle=c;ctx.textAlign=al2;ctx.font=wt+' '+sz+'px "Inter Tight",system-ui,sans-serif';ctx.fillText(s,x,y)};
+ const ln=(a,b,al,c=fg,w=1)=>{ctx.globalAlpha=al;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()};
+ const hull=(i,us,v,al,col)=>{const R=pl(i),a=Math.min(...us),b=Math.max(...us),p=pt(i,(a+b)/2,v);ctx.globalAlpha=al;ctx.fillStyle=col;ctx.beginPath();ctx.ellipse(p[0],p[1],(b-a)/2*R.w+R.w*.045,R.h*.46,0,0,7);ctx.fill()};
+ const bars=(x,y,sd,al)=>{ctx.globalAlpha=al;ctx.fillStyle=fg;for(let k=0;k<4;k++){const h=3+((sd*5+k*7)%9);ctx.fillRect(x+k*4,y-h,2.5,h)}};
+ const tp=t=>pt(0,tu(t),tv(t)),sp=(t,o)=>pt(0,tu(t)+o[0],tv(t)+o[1]);
+ for(let i=0;i<4;i++){
+  const a=ease(clamp((P-i*.17)/.1));if(a<=0)continue;
+  ctx.save();ctx.translate(0,(1-a)*-28);
+  const c=[[0,0],[1,0],[1,1],[0,1]].map(([u,v])=>pt(i,u,v));
+  ctx.globalAlpha=a*.05;ctx.fillStyle=fg;ctx.beginPath();c.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill();
+  ctx.globalAlpha=a*(i===cur||fin?.55:.2);ctx.strokeStyle=fg;ctx.lineWidth=1;ctx.stroke();
+  txt(LN[i],c[0][0],c[0][1]-7,a*.7,11,mut,500,'left');
+  if(i===0){const w=ease(clamp((P-.17)/.1));
+   CL.forEach((m,k)=>hull(0,m.map(tu),.56,w*.16,COL[k]));
+   J.forEach(([x,sa,y,sb])=>ln(sp(x,SAT[sa]),sp(y,SAT[sb]),a*.9,w>.3?COL[cOf[x]]:fg,2));
+   TN.forEach((nm,t)=>{const x=tp(t);SAT.forEach(o=>{const q=sp(t,o);ln(x,q,a*.3);dot(q[0],q[1],2.6,fg,a*.9)});dot(x[0],x[1],5,fg,a*(1-w));dot(x[0],x[1],5,COL[cOf[t]],a*w);if(W>520||cOf[t]===0)txt(nm,x[0],x[1]+16,a*.85,10)})}
+  if(i===1){const w=ease(clamp((P-.34)/.1));
+   G3.forEach((g,k)=>hull(1,g.map(x=>cu[x]),.5,w*.16,COL[k]));
+   CL.forEach((m,k)=>{const x=pt(1,cu[k],.5);m.forEach(t=>ln(x,tp(t),a*.22))});
+   CL.forEach((m,k)=>{const x=pt(1,cu[k],.5);dot(x[0],x[1],7,COL[k],a);bars(x[0]+10,x[1]+4,k,a*.8);if(W>520)txt(N2[k],x[0],x[1]+24,a*.9,10.5)})}
+  if(i===2){const w=ease(clamp((P-.51)/.1));
+   G4.forEach((g,k)=>hull(2,g.map(x=>u3[x]),.5,w*.16,COL[k+3]));
+   G3.forEach((g,k)=>{const x=pt(2,u3[k],.5);g.forEach(m=>ln(x,pt(1,cu[m],.5),a*.25))});
+   G3.forEach((g,k)=>{const x=pt(2,u3[k],.5);dot(x[0],x[1],9,COL[k],a);bars(x[0]+13,x[1]+4,k+2,a*.8);txt(N3[k],x[0],x[1]+27,a*.9,11,fg,600)})}
+  if(i===3){G4.forEach((g,k)=>{const x=pt(3,u4[k],.5);g.forEach(m=>ln(x,pt(2,u3[m],.5),a*.25));dot(x[0],x[1],11,COL[k+3],a);bars(x[0]+15,x[1]+4,k+5,a*.8);txt(N4[k],x[0],x[1]+30,a,12,fg,600)})}
+  ctx.restore();
+ }
+ const qa=ease(clamp((P-.68)/.04)),sim=ease(clamp((P-.7)/.1)),f=clamp((P-.84)/.1)*3;
+ if(qa>0){const top=pt(3,u4[0],.5),qp=[top[0],Math.max(14,H*.07)];
+  ctx.globalAlpha=qa;ctx.strokeStyle=em;ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(qp[0],qp[1],7,0,7);ctx.stroke();
+  txt('question embedding',qp[0]+16,qp[1]+4,qa,12,em,600,'left');
+  [[u4[0],1],[u4[1],.2]].forEach(([u,w])=>{const e=pt(3,u,.5),m=[qp[0]+(e[0]-qp[0])*sim,qp[1]+(e[1]-qp[1])*sim];ctx.setLineDash(w<1?[3,5]:[]);ln(qp,m,w<1?.4:.95,w<1?mut:em,w<1?1:2.5);ctx.setLineDash([]);if(w===1&&sim>.9){ctx.globalAlpha=1;ctx.strokeStyle=em;ctx.lineWidth=2;ctx.beginPath();ctx.arc(e[0],e[1],17,0,7);ctx.stroke()}})}
+ if(f>0){const A=pt(3,u4[0],.5),B=pt(2,u3[0],.5),C=pt(1,cu[0],.5),T=CL[0].map(tp);
+  const seg=(p,q,r)=>{if(r<=0)return;ctx.globalAlpha=1;ctx.strokeStyle=em;ctx.lineWidth=3;ctx.shadowColor=em;ctx.shadowBlur=16;ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(p[0]+(q[0]-p[0])*r,p[1]+(q[1]-p[1])*r);ctx.stroke();ctx.shadowBlur=0};
+  seg(A,B,clamp(f));seg(B,C,clamp(f-1));T.forEach(t=>seg(C,t,clamp(f-2)));
+  [[A,0],[B,1],[C,2]].forEach(([q,k])=>{if(f>=k)dot(q[0],q[1],7,em,1)});
+  if(f>=3){CL[0].forEach(t=>{const x=tp(t);dot(x[0],x[1],6,em,1);SAT.forEach(o=>{const q=sp(t,o);dot(q[0],q[1],3.6,em,1)})});
+   txt('tables and columns become context for the LLM',pl(0).cx,Math.min(H-6,pl(0).cy+pl(0).h/2+22),1,12,em,600)}}
+ ctx.globalAlpha=1;
+}
+function update(){
+ const r=stage.getBoundingClientRect(),span=r.height-innerHeight;
+ if(!RM)P=clamp(-(r.top-54)/span);
+ $('#bar').style.width=P*100+'%';
+ const c=P<.68?Math.floor(P/.17):P<.84?4:5;
+ if(c!==ph){ph=c;const d=PH[c],el=$('#ph');el.innerHTML='<small>'+d[0]+'</small><h3>'+d[1]+'</h3><p>'+d[2]+'</p>'+(d[3]?'<p class="ex">'+d[3]+'</p>':'');el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap');
+  document.querySelectorAll('.pips span').forEach((e,i)=>e.classList.toggle('on',i<=Math.min(c,3)))}
+ $('#copy').classList.toggle('f1',c>=4);$('#copy').classList.toggle('f2',c===5);
+ $('#q').textContent=Q.slice(0,Math.floor(clamp((P-.68)/.06)*Q.length));
+ $('#sql').textContent=SQL.slice(0,Math.floor(clamp((P-.9)/.1)*SQL.length));
+}
+(function loop(t){update();draw();requestAnimationFrame(loop)})(0);
+(function(){
+const G=$('#gantt'),D=i=>'07/'+(16+i),OE=4;
+const base=()=>[['John',0,0,1,[]],['Thomas',1,1,1,[0]],['Kenny',2,2,1,[1]],['Samantha',3,2,1,[1]],['Steven',4,3,1,[2]],['Mary',5,4,1,[4]]].map(([n,r,s,d,p])=>({n,r,start:s,dur:d,deps:p.slice(),done:null}));
+let T=base(),today=0,n=7,sig='',step=0,drag=null,sup=false,cur=0,until=0,raf=0,mt=0;
+const dl=t=>t.start+t.dur-1,ee=t=>t.done!=null?Math.max(dl(t),t.done):Math.max(dl(t),today),late=t=>t.done!=null?t.done>dl(t):today>dl(t);
+const pl_=k=>k>1?'s':'';
+const stx=t=>t.done!=null?'Completed '+D(t.done)+(late(t)?', '+(t.done-dl(t))+' day'+pl_(t.done-dl(t))+' late':' on time'):late(t)?'Overdue by '+(today-dl(t))+' day'+pl_(today-dl(t)):'Due '+D(dl(t));
+let h='<div class="tn"></div><div id="cols" style="display:contents"></div>';
+for(let r=0;r<=6;r++)h+='<div class="hl" style="--r:'+r+'"></div>'+(r<6?'<div class="rl" style="--r:'+r+'">Task '+(r+1)+'</div>':'');
+T.forEach((t,i)=>{h+='<div class="bar" data-i="'+i+'" style="--r:'+t.r+'" tabindex="0" role="button" aria-label="Task '+(i+1)+', '+t.n+'">'+t.n+'<i class="rz"></i><b class="port"></b></div>'});
+h+='<svg class="arr" id="ar"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.6"/></marker></defs><g id="eg"></g></svg><svg class="arr" id="tm"><path id="tp" fill="none" stroke-width="2" stroke-dasharray="5 5"/></svg>';
+G.innerHTML=h;
+const B=[...G.querySelectorAll('.bar')],CO=$('#cols'),TNOW=G.querySelector('.tn'),EG=$('#eg');
+function resolve(){for(let k=0;k<T.length;k++)T.forEach(t=>t.deps.forEach(p=>{t.start=Math.max(t.start,ee(T[p])+1)}))}
+const reach=(a,b)=>{const seen=new Set(),go=x=>{if(x===b)return true;if(seen.has(x))return false;seen.add(x);return T.some((t,i)=>t.deps.includes(x)&&go(i))};return go(a)};
+function arrows(){
+ const gr=G.getBoundingClientRect(),sg=T.map(t=>t.deps.join(',')).join('|');
+ if(sg!==sig){sig=sg;let q='';T.forEach((t,i)=>t.deps.forEach(p=>{q+='<g class="e"><path class="v" marker-end="url(#ah)"/><path class="hh" data-p="'+p+'" data-s="'+i+'"><title>Click to remove this connection</title></path></g>'}));EG.innerHTML=q}
+ EG.querySelectorAll('.hh').forEach(e=>{const a=B[+e.dataset.p].getBoundingClientRect(),b=B[+e.dataset.s].getBoundingClientRect(),x1=a.right-gr.left,y1=a.top+a.height/2-gr.top,x2=b.left-gr.left,y2=b.top+b.height/2-gr.top,c=Math.max(14,Math.min(60,(x2-x1)/2)),d='M'+x1+' '+y1+'C'+(x1+c)+' '+y1+' '+(x2-c)+' '+y2+' '+x2+' '+y2;e.setAttribute('d',d);e.previousElementSibling.setAttribute('d',d)});
+}
+const tick=()=>{arrows();raf=performance.now()<until?requestAnimationFrame(tick):0};
+const kick=()=>{until=performance.now()+800;if(!raf)raf=requestAnimationFrame(tick)};
+function update(){
+ resolve();
+ const pe=Math.max(...T.map(ee)),nn=Math.min(14,Math.max(7,pe+1,today+1));
+ if(nn!==n||!CO.children.length){n=nn;G.style.setProperty('--n',n);CO.innerHTML=Array.from({length:n},(_,i)=>'<div class="hd" style="--i:'+i+'">'+D(i)+'</div><div class="vl" style="--i:'+i+'"></div>').join('')}
+ CO.querySelectorAll('.hd').forEach((e,i)=>e.classList.toggle('now',i===today));
+ TNOW.style.setProperty('--s',today);
+ T.forEach((t,i)=>{const b=B[i];b.style.setProperty('--s',t.start);b.style.setProperty('--l',ee(t)-t.start+1);b.classList.toggle('ok',t.done!=null&&!late(t));b.classList.toggle('late',late(t));b.classList.toggle('done',t.done!=null)});
+ const risk=pe>OE,st=$('#st');
+ $('#pe').textContent=D(pe);$('#cd').textContent=D(today);st.textContent=risk?'At Risk':'Healthy';st.className='pill '+(risk?'bad':'good');
+ const all=T.every(t=>t.done!=null),ws=$('#ws');ws.textContent=all?'Complete':'Incomplete';ws.className='pill '+(all?'good':'neutral');
+ $('#adv').textContent='Advance to '+D(today+1);$('#adv').disabled=today>=13;
+ kick();
+}
+const say=s=>{const m=$('#msg');m.textContent=s;clearTimeout(mt);mt=setTimeout(()=>m.textContent='',3500)};
+function addDep(p,s){if(p===s)return'';let m;if(T[s].deps.includes(p))m='Already connected.';else if(T[s].done!=null)m='That task is already complete.';else if(reach(s,p))m='That would create a loop.';else{T[s].deps.push(p);m=T[p].n+' → '+T[s].n+' connected.';update()}return m}
+// modal
+const dlg=$('#dlg');
+function fill(i){cur=i;const t=T[i],w=t.deps.filter(p=>T[p].done==null),open=t.done==null,blocked=open&&w.length;
+ dlg.innerHTML='<div class="dm"><h3>Task '+(i+1)+' · '+t.n+'</h3><p class="mst '+(late(t)?'bad':t.done!=null?'good':'')+'">'+stx(t)+'</p><p>Window: '+D(t.start)+(dl(t)>t.start?' to '+D(dl(t)):'')+'</p><p>Predecessors: '+(t.deps.length?t.deps.map(p=>'<button class="ch" data-p="'+p+'" title="Remove connection">'+T[p].n+' ✕</button>').join(''):'none')+'</p>'+(blocked?'<p class="mn">Waiting on '+w.map(p=>T[p].n).join(', ')+' to complete first.</p>':'')+'<div class="sbtns"><button class="pb" id="cmp"'+(blocked?' disabled':'')+'>'+(open?'Complete':'Reopen task')+'</button><button class="pb gb" id="cls">Close</button></div></div>'}
+function openM(i){fill(i);if(!dlg.open)dlg.showModal()}
+dlg.addEventListener('click',e=>{if(e.target===dlg)return dlg.close();const b=e.target.closest('button');if(!b)return;
+ if(b.id==='cls')dlg.close();
+ else if(b.id==='cmp'){const t=T[cur];t.done=t.done!=null?null:today;dlg.close();update()}
+ else if(b.dataset.p!=null){T[cur].deps=T[cur].deps.filter(x=>x!==+b.dataset.p);update();fill(cur)}});
+// interactions
+G.addEventListener('pointerdown',e=>{const bar=e.target.closest('.bar');if(!bar)return;const i=+bar.dataset.i;
+ if(e.target.closest('.port')){drag={k:'c',i};e.target.setPointerCapture(e.pointerId);e.preventDefault()}
+ else if(e.target.closest('.rz')&&T[i].done==null){drag={k:'r',i};e.target.setPointerCapture(e.pointerId);e.preventDefault()}});
+G.addEventListener('pointermove',e=>{if(!drag)return;sup=true;const gr=G.getBoundingClientRect();
+ if(drag.k==='r'){const lc=parseFloat(getComputedStyle(G).getPropertyValue('--lc')),cw=(gr.width-lc)/n,col=Math.floor((e.clientX-gr.left-lc)/cw),t=T[drag.i],nd=Math.max(1,Math.min(col,n-1)-t.start+1);if(nd!==t.dur){t.dur=nd;update()}}
+ else{const a=B[drag.i].getBoundingClientRect(),x=a.right-gr.left,y=a.top+a.height/2-gr.top;$('#tp').setAttribute('d','M'+x+' '+y+'L'+(e.clientX-gr.left)+' '+(e.clientY-gr.top));B.forEach(b=>b.classList.remove('tgt'));const u=document.elementFromPoint(e.clientX,e.clientY),b=u&&u.closest('.bar');if(b&&+b.dataset.i!==drag.i)b.classList.add('tgt')}});
+const end=e=>{if(!drag)return;const d=drag;drag=null;$('#tp').setAttribute('d','');B.forEach(b=>b.classList.remove('tgt'));
+ if(d.k==='c'&&sup){const u=document.elementFromPoint(e.clientX,e.clientY),b=u&&u.closest('.bar');if(b)say(addDep(d.i,+b.dataset.i))}
+ setTimeout(()=>sup=false,60)};
+G.addEventListener('pointerup',end);G.addEventListener('pointercancel',end);
+G.addEventListener('click',e=>{const a=e.target.closest('.hh');
+ if(a){const s=+a.dataset.s;T[s].deps=T[s].deps.filter(x=>x!==+a.dataset.p);update();say('Connection removed.');return}
+ const b=e.target.closest('.bar');if(b&&!sup)openM(+b.dataset.i)});
+G.addEventListener('keydown',e=>{const b=e.target.closest&&e.target.closest('.bar');if(b&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openM(+b.dataset.i)}});
+addEventListener('resize',kick);
+// story
+const ST=[
+{t:'Plan the workflow, box each task',x:'A workflow like client onboarding is a list of tasks, usually owned by different people. Each task is boxed into the window it must be finished in, on one shared timeline. The arrows are connections: a task can’t be completed until its predecessors are. Workflow Status stays Incomplete until every task is complete.',a:()=>{}},
+{t:'Finish in the window, turn green',x:'Open a task and hit Complete in the modal. If it’s done inside its deadline window, the box turns green. John finishes Task 1 on 07/16.',a:()=>{T[0].done=0}},
+{t:'Predecessors gate the work',x:'Thomas’s task is the predecessor of both Kenny’s and Samantha’s, so neither can be completed until he’s done. He finishes on 07/17 and both unlock.',a:()=>{today=1;T[1].done=1}},
+{t:'Parallel tasks, independent clocks',x:'Kenny completes on 07/18, right on his deadline. Samantha has the same deadline, but she hasn’t marked her task complete yet.',a:()=>{today=2;T[2].done=2}},
+{t:'Late work stretches and turns red',x:'Samantha completes on 07/19, a day late. Her box stretches across 07/18 and 07/19 and turns red. Nothing depends on her task, so the projected end date doesn’t move and the workflow stays Healthy. (An open task stretches by itself every day it’s overdue.)',a:()=>{today=3;T[3].done=3}},
+{t:'Delays ripple forward',x:'Steven’s task was due 07/19 but wasn’t completed until 07/20, so it stretches and turns red. Mary depends on him, so her task is pushed from 07/20 to 07/21, past the original end date. The workflow flips to At Risk.',a:()=>{today=4;T[4].done=4}},
+{t:'Stretch a box to change the plan',x:'Drag a box’s right edge to lengthen or shorten its duration. Mary extends her task to 07/22. Anything that depends on a task gets pushed later when it grows, but never pulled earlier when it shrinks.',a:()=>{T[5].dur=2}},
+{t:'Every task done, workflow complete',x:'Mary completes on 07/22, inside her extended window, so her box turns green. With every task complete, Workflow Status flips from Incomplete to Complete. Health stays At Risk, because the workflow finished after its original end date.',a:()=>{today=6;T[5].done=6}},
+{t:'Now try it yourself',x:'Open any task and hit Reopen to set the Workflow Status back to Incomplete, then complete it again. Drag a right edge to resize. Drag the ○ handle from one task onto another to connect them, and click an arrow to remove it. Advance the day to watch overdue tasks go red. Reset restores this step.',a:()=>{}}];
+$('#sp').innerHTML='<span></span>'.repeat(ST.length);
+function play(k){step=k;T=base();today=0;ST.slice(1,k+1).forEach(s=>{s.a();resolve()});
+ $('#sn').textContent='Step '+(k+1)+' of '+ST.length;$('#stt').textContent=ST[k].t;$('#stx').textContent=ST[k].x;
+ $('#back').disabled=!k;$('#next').textContent=k===ST.length-1?'Replay':'Next ▸';
+ document.querySelectorAll('#sp span').forEach((e,i)=>e.classList.toggle('on',i<=k));update()}
+$('#next').onclick=()=>play(step===ST.length-1?0:step+1);$('#back').onclick=()=>play(step-1);
+$('#rst').onclick=()=>play(step);$('#adv').onclick=()=>{today++;update()};
+play(0);
+})();
+(function(){
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io2.observe(e));
+// clipboard history
+const SEED=[['TEXT','Meeting notes: ship v2 by Friday'],['LINK','https://developer.apple.com/design'],['CODE','let pinned = clips.filter { $0.pinned }'],['TEXT','Order #48213 confirmation'],['CODE','npm run build -- --prod']];
+const FRESH=[['LINK','https://swift.org/documentation'],['TEXT','Call Maya at 4:30 pm'],['CODE','git rebase -i HEAD~3'],['TEXT','Invoice total: $1,284.00']];
+let clips=SEED.slice(),ni=0,sel=-1,st=0;const ul=$('#clips'),cq=$('#cq');
+function rc(fresh){const f=cq.value.trim().toLowerCase();
+ ul.innerHTML=clips.map((c,i)=>({c,i})).filter(o=>!f||(o.c[1]+o.c[0]).toLowerCase().includes(f)).map((o,k)=>'<li data-i="'+o.i+'" class="'+(o.i===sel?'on ':'')+(fresh&&o.i===0?'nw':'')+'"><span>'+esc(o.c[1])+'</span><em>'+(o.i===sel?'COPIED':o.c[0]+(o.c[2]?' · '+o.c[2]:''))+'</em></li>').join('')||'<li><span>No clips match.</span></li>'}
+ul.addEventListener('click',e=>{const li=e.target.closest('li[data-i]');if(!li)return;const c=clips.splice(+li.dataset.i,1)[0];clips.unshift(c);sel=0;rc();clearTimeout(st);st=setTimeout(()=>{sel=-1;rc()},1300)});
+cq.addEventListener('input',()=>rc());
+$('#cnew').onclick=()=>{clips.unshift(FRESH[ni++%FRESH.length]);if(clips.length>7)clips.pop();sel=-1;cq.value='';rc(true)};
+const IPH=[['TEXT','Pick up dry cleaning by 6','iPhone'],['LINK','https://maps.apple.com/?q=cafe','iPhone'],['TEXT','Flight confirmation: AA 2043','iPhone']];let pi=0;
+$('#cph').onclick=()=>{clips.unshift(IPH[pi++%IPH.length]);if(clips.length>7)clips.pop();sel=-1;cq.value='';rc(true)};
+rc();
+// multicam
+const mc=$('#mc'),seg=mc.querySelectorAll('.seg button'),shut=$('#shut'),stt=$('#cst'),files=$('#cfiles');
+let three=true,rec=false,sec=0,tm=0;
+const tf=()=>String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');
+function cs(){const n=three?3:2;mc.classList.toggle('two',!three);mc.classList.toggle('rec',rec);shut.classList.toggle('on',rec);shut.setAttribute('aria-pressed',rec);shut.setAttribute('aria-label',rec?'Stop recording':'Record');stt.textContent=rec?'REC '+tf()+' / '+n+' feeds live':n+' feeds / ready'}
+seg.forEach((b,i)=>b.onclick=()=>{if(rec)return;three=i===1;seg.forEach((x,j)=>x.classList.toggle('on',j===i));files.innerHTML='';cs()});
+shut.onclick=()=>{rec=!rec;if(rec){sec=0;files.innerHTML='';tm=setInterval(()=>{sec++;cs()},1000)}else{clearInterval(tm);files.innerHTML='<b>Saved to Photos as separate files</b>'+(three?['Main','Ultra Wide','Front']:['Main','Front']).map(x=>'<span>'+x+'.mov</span>').join('')}cs()};
+cs();
+})();
+(function(){
+const B=$('#ctb'),M=$('#ctm'),msg=$('#ctmsg'),cnt=$('#ctcnt'),link=$('#ctlink'),inp=$('#ctinp'),tg=document.querySelectorAll('#cttg button');
+let on=false,act='b',clicks=0,eat=false;
+const say=t=>msg.textContent=t,plural=n=>n+' click'+(n>1?'s':'');
+const paint=()=>{B.classList.toggle('act',act==='b');M.classList.toggle('act',act==='m')};
+function reset(){act='b';clicks=0;eat=false;inp.blur();cnt.textContent='—';say('Messages is in the background. Try clicking its link or its text field.');paint()}
+M.addEventListener('mousedown',e=>{clicks++;
+ if(act!=='m'){act='m';paint();
+  if(!on){e.preventDefault();eat=true;cnt.textContent=plural(clicks)+' so far';say('Click 1: the window only activated. Nothing else happened, so you have to click again.')}}},true);
+M.addEventListener('click',e=>{if(eat){e.preventDefault();e.stopPropagation();eat=false}},true);
+link.addEventListener('click',e=>{e.preventDefault();cnt.textContent=plural(clicks);say(clicks===1?'One click: the window activated and the link opened.':'Click '+clicks+': the link opened.')});
+inp.addEventListener('focus',()=>{if(!clicks)return;cnt.textContent=plural(clicks);say(clicks===1?'One click: the window activated and the field is ready to type.':'Click '+clicks+': the field is ready to type.')});
+B.addEventListener('mousedown',()=>{if(act!=='b')reset()});
+tg.forEach((b,i)=>b.onclick=()=>{on=i===1;tg.forEach((x,j)=>x.classList.toggle('on',j===i));reset()});
+$('#ctreset').onclick=reset;
+reset();
+})();
+// counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const el=e.target,n=+el.dataset.n,s=el.dataset.s,t0=performance.now();
+ (function s1(t){const k=RM?1:clamp((t-t0)/1400);el.textContent=Math.round(n*ease(k))+s;if(k<1)requestAnimationFrame(s1)})(t0)}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(e=>io.observe(e));
+// self-healing demo
+$('#run').addEventListener('click',()=>{const ps=[...document.querySelectorAll('#log p')];ps.forEach(p=>p.classList.remove('on'));ps.forEach((p,i)=>setTimeout(()=>p.classList.add('on'),RM?0:i*850))});
+</script>
+</body>
+</html>
