@@ -19,8 +19,8 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--sig);outline-offset:3px;border-radius:4px}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(20px,5vw,56px);backdrop-filter:saturate(180%) blur(18px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line);font-size:14px}
 nav b{font-weight:600;letter-spacing:-.01em}nav div{display:flex;gap:22px}nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--fg)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
-.wrap.wide{max-width:1360px}
+.wrap{max-width:1760px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.wrap.wide{max-width:1760px}
 h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.02;font-weight:600}
 .hero{min-height:calc(100svh - 54px);display:flex;flex-direction:column;justify-content:center;padding-block:72px}
 .hero h1{font-size:clamp(56px,13vw,176px);font-weight:700;letter-spacing:-.06em;line-height:.9;animation:focus 1.4s cubic-bezier(.2,.7,.2,1) both}
@@ -33,7 +33,7 @@ h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.02;font-weight:600}
 .cue{margin-top:56px;font-size:14px;color:var(--mut)}
 /* pinned stage */
 .stage{height:720vh;position:relative}
-.pin{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));height:calc(100svh - 54px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(16px,3vw,48px);align-items:center;padding:0 clamp(20px,5vw,56px);max-width:1320px;margin:0 auto}
+.pin{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));height:calc(100svh - 54px);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);grid-template-rows:auto minmax(0,1fr);gap:clamp(8px,2vh,24px) clamp(16px,3vw,48px);align-items:center;padding:0 clamp(20px,5vw,56px);max-width:1760px;margin:0 auto}
 .copy{position:relative}
 .cap{font-size:clamp(34px,4.6vw,68px);font-weight:600;letter-spacing:-.045em;line-height:1;min-height:3.1em;position:relative}
 .cap i{font-style:normal;position:absolute;inset:0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
@@ -41,7 +41,7 @@ h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.02;font-weight:600}
 .q,.sql{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:16px 18px;font-size:15px;margin-top:14px;min-height:56px}
 .q{font-size:18px}.sql{font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--sig);white-space:pre-wrap;min-height:92px}
 .note{font-size:12px;color:var(--mut);margin-top:10px}
-canvas{width:100%;height:min(78svh,720px);display:block}
+canvas{width:100%;height:100%;max-height:980px;min-height:0;display:block}
 .pips{display:flex;gap:6px;margin-bottom:22px}.pips span{width:36px;height:4px;border-radius:2px;background:var(--line);transition:background .3s}.pips span.on{background:var(--fg)}
 .ph{min-height:300px}.ph small{display:block;color:var(--mut);font-size:14px;margin-bottom:10px}
 .ph h3{font-size:clamp(28px,3.4vw,48px);letter-spacing:-.04em;line-height:1.02}
@@ -98,7 +98,7 @@ section.pad{padding-block:clamp(80px,12vw,160px)}
 .job{position:sticky;top:calc(66px + var(--i)*18px + env(safe-area-inset-top,0px));background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,48px);margin-bottom:28px;box-shadow:0 -18px 40px -24px rgba(0,0,0,.35)}
 .job header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;align-items:baseline;margin-bottom:22px}
 .job h3{font-size:clamp(26px,3.4vw,44px)}.when{color:var(--mut);font-size:15px}
-.job ul{margin:0;padding-left:1.1em;display:grid;gap:12px;max-width:105ch}.job li{color:var(--mut);font-size:16.5px}.job li b{color:var(--fg2);font-weight:600}
+.job ul{margin:0;padding-left:1.1em;display:grid;gap:12px;max-width:118ch}.job li{color:var(--mut);font-size:16.5px}.job li b{color:var(--fg2);font-weight:600}
 .run{margin-top:24px;border:0;border-radius:99px;padding:12px 22px;font:600 15px inherit;font-family:inherit;background:var(--fg2);color:var(--bg2);cursor:pointer;transition:transform .2s}.run:active{transform:scale(.96)}
 .log{margin-top:16px;font:13.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;display:grid;gap:4px}.log p{margin:0;opacity:0;transform:translateX(-8px);transition:.4s}.log p.on{opacity:1;transform:none}.bad{color:#d9534f}.ok{color:#2e9d5b}
 /* stats */
@@ -115,7 +115,7 @@ section.pad{padding-block:clamp(80px,12vw,160px)}
 footer{padding-block:clamp(80px,12vw,160px);text-align:center}
 footer a.mail{display:inline-block;font-size:clamp(18px,5vw,64px);font-weight:600;letter-spacing:-.05em;text-decoration:none;white-space:nowrap}
 footer a.mail:hover{color:var(--sig)}footer p{color:var(--mut)}
-@media (max-width:820px){.pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-content:start;padding-top:12px;gap:0}.pin canvas{order:-1;height:40svh}.ph{min-height:0}.cap{min-height:2.2em;font-size:32px}.sql{min-height:70px}.sg,.two{grid-template-columns:1fr}.job{position:relative;top:auto}.copy{order:1}}
+@media (max-width:820px){.pin{grid-template-columns:1fr;grid-template-rows:none;align-content:start;padding-top:12px;gap:0}.gh{order:-2}.gh p{display:none}.gh h2{font-size:26px!important}.pin canvas{order:-1;height:40svh}.ph{min-height:0}.cap{min-height:2.2em;font-size:32px}.sql{min-height:70px}.sg,.two{grid-template-columns:1fr}.job{position:relative;top:auto}.copy{order:1}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1{animation:none}.cap i,.log p{transition:none}}
 
 /* personal projects */
@@ -170,6 +170,9 @@ footer a.mail:hover{color:var(--sig)}footer p{color:var(--mut)}
 .ctreset{border:1px solid rgba(60,40,70,.3);background:none;color:#2a2230;border-radius:99px;padding:8px 16px;font:500 13px "Inter Tight",system-ui,sans-serif;cursor:pointer}
 .ctmsg{min-height:44px;margin:0;max-width:440px;text-align:center;font-size:14px;color:#4b3d54}.ctn{margin:0;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#6b5a74}.ctn b{font-weight:600;color:#2a2230}
 @media (prefers-reduced-motion:reduce){.ctw{transition:none}}
+.gh{grid-column:1/-1;text-align:center;align-self:start;padding-top:clamp(8px,1.6vh,20px)}
+.gh h2{font-size:clamp(28px,3.4vw,56px);letter-spacing:-.04em;line-height:1.02;font-weight:600;margin:0}.gh h2 span{color:var(--mut)}
+.gh p{margin:10px auto 0;max-width:120ch;color:var(--mut);font-size:clamp(14px,1.15vw,17px)}
 </style>
 </head>
 <body>
@@ -180,17 +183,14 @@ footer a.mail:hover{color:var(--sig)}footer p{color:var(--mut)}
   <h1>Sajjad<span>Hashmani</span></h1>
   <p class="role">Senior GenAI Engineer</p>
   <p class="sum">Senior GenAI Engineer with a Master’s in Computer Science and 7+ years of experience building intelligent, reliable software. I specialize in connecting large language models to real-world data and systems, including retrieval-augmented generation, knowledge graphs, Text-to-SQL, and agentic workflows, across enterprise AI platforms and cloud-native, distributed systems. AI isn’t just my job. It’s woven into how I work and live, from the tools I build to the way I learn, plan, and solve everyday problems. Outside of work, I build apps and tools as a hobby to tackle the real-life problems I run into myself. I love turning complex problems into simple, dependable products, and I enjoy mentoring other engineers along the way.</p>
-  <div class="meta"><a href="mailto:sajjadhashmani1@gmail.com">sajjadhashmani1@gmail.com</a><a href="tel:+16822565391">(682)-256-5391</a><a href="https://sajjadhashmani.com/">sajjadhashmani.com</a><span>No sponsorship required</span></div>
+  <div class="meta"><a href="mailto:sajjadhashmani1@gmail.com">sajjadhashmani1@gmail.com</a><a href="tel:+16822565391">(682)-256-5391</a><a href="http://sajjadhashmani.com/">sajjadhashmani.com</a><span>No sponsorship required</span></div>
   <p class="cue">Scroll to see the work in motion ↓</p>
-</div></section>
-
-<section class="pad" id="graphrag" style="padding-bottom:clamp(24px,4vw,48px)"><div class="wrap wide">
- <h2 class="big" style="margin-bottom:28px">GraphRAG.<br><span>Ask your data anything, in plain English.</span></h2>
- <p class="sum">An end-to-end platform that lets people ask complex relational databases questions in natural language. A four-layer semantic knowledge graph guides schema discovery, and an LLM turns the question into executable SQL and a human-readable answer. Scroll to watch the graph get built, then follow a question as it travels through it.</p>
 </div></section>
 
 <section class="stage" id="stage" aria-label="How the four-layer graph works">
  <div class="pin">
+  <div class="gh"><h2>GraphRAG. <span>Ask your data anything, in plain English.</span></h2>
+   <p>An end-to-end platform that lets people ask complex relational databases questions in natural language. A four-layer semantic knowledge graph guides schema discovery, and an LLM turns the question into executable SQL and a human-readable answer. Scroll to watch the graph get built, then follow a question as it travels through it.</p></div>
   <div class="copy" id="copy">
    <div class="pips"><span></span><span></span><span></span><span></span></div>
    <div class="ph" id="ph"></div>
@@ -322,7 +322,7 @@ footer a.mail:hover{color:var(--sig)}footer p{color:var(--mut)}
 
 <footer class="alt" id="contact"><div class="wrap">
  <a class="mail" href="mailto:sajjadhashmani1@gmail.com">sajjadhashmani1@gmail.com</a>
- <p>(682)-256-5391 · <a href="https://sajjadhashmani.com/">sajjadhashmani.com</a></p>
+ <p>(682)-256-5391 · <a href="http://sajjadhashmani.com/">sajjadhashmani.com</a></p>
 </div></footer>
 
 <dialog id="dlg" aria-label="Task details"></dialog>
@@ -349,17 +349,17 @@ const tu=i=>.04+i*.92/12,tv=i=>i%2?.7:.42,mean=a=>a.reduce((s,x)=>s+x,0)/a.lengt
 const cu=CL.map(m=>mean(m.map(tu))),u3=G3.map(g=>mean(g.map(c=>cu[c]))),u4=G4.map(g=>mean(g.map(x=>u3[x]))),cOf=[];
 CL.forEach((m,c)=>m.forEach(t=>cOf[t]=c));
 let W,H,mx=-1,my=-1,P=RM?1:0,ph=-1;
-const pl=i=>({w:W*.78,h:Math.min(H*.15,100),sk:W*.12,cx:W*.5,cy:H*(.2+(3-i)*.22)});
+const pl=i=>({w:W*.78,h:Math.min(H*.16,140),sk:W*.12,cx:W*.5,cy:H*(.2+(3-i)*.2)});
 const pt=(i,u,v)=>{const p=pl(i);return[p.cx+(u-.5)*p.w+(.5-v)*p.sk,p.cy+(v-.5)*p.h]};
 function size(){const d=devicePixelRatio||1,r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0)}
 addEventListener('resize',size);size();
 cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});cv.addEventListener('pointerleave',()=>mx=-1);
 function draw(){
  const cs=getComputedStyle(document.documentElement),fg=cs.getPropertyValue('--fg').trim(),mut=cs.getPropertyValue('--mut').trim(),em=cs.getPropertyValue('--ember').trim();
- ctx.clearRect(0,0,W,H);
+ ctx.clearRect(0,0,W,H);const K=Math.max(1,Math.min(1.45,W/760));
  const c0=P<.68?Math.floor(P/.17):4,cur=Math.min(3,c0),fin=c0>=4;
- const dot=(x,y,r,c,al)=>{const h=mx>=0&&Math.hypot(mx-x,my-y)<18;ctx.globalAlpha=al;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r*(h?1.6:1),0,7);ctx.fill()};
- const txt=(s,x,y,al,sz=12,c=fg,wt=500,al2='center')=>{ctx.globalAlpha=al;ctx.fillStyle=c;ctx.textAlign=al2;ctx.font=wt+' '+sz+'px "Inter Tight",system-ui,sans-serif';ctx.fillText(s,x,y)};
+ const dot=(x,y,r,c,al)=>{const h=mx>=0&&Math.hypot(mx-x,my-y)<18;ctx.globalAlpha=al;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r*K*(h?1.6:1),0,7);ctx.fill()};
+ const txt=(s,x,y,al,sz=12,c=fg,wt=500,al2='center')=>{ctx.globalAlpha=al;ctx.fillStyle=c;ctx.textAlign=al2;ctx.font=wt+' '+(sz*K)+'px "Inter Tight",system-ui,sans-serif';ctx.fillText(s,x,y)};
  const ln=(a,b,al,c=fg,w=1)=>{ctx.globalAlpha=al;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()};
  const hull=(i,us,v,al,col)=>{const R=pl(i),a=Math.min(...us),b=Math.max(...us),p=pt(i,(a+b)/2,v);ctx.globalAlpha=al;ctx.fillStyle=col;ctx.beginPath();ctx.ellipse(p[0],p[1],(b-a)/2*R.w+R.w*.045,R.h*.46,0,0,7);ctx.fill()};
  const bars=(x,y,sd,al)=>{ctx.globalAlpha=al;ctx.fillStyle=fg;for(let k=0;k<4;k++){const h=3+((sd*5+k*7)%9);ctx.fillRect(x+k*4,y-h,2.5,h)}};
